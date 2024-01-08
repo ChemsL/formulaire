@@ -1,0 +1,15 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+form, h1, div {
+  margin: auto;
+  justify-content: center;
+}
+
+.submit {
+  background-color: chartreuse;
+  border-radius: 25%;
+  margin-top: 4rem;
+}/*# sourceMappingURL=style.css.map */

@@ -1,15 +1,46 @@
 body {
   display: flex;
   flex-direction: column;
+  background: rgb(131, 58, 180);
+  background: linear-gradient(90deg, rgb(131, 58, 180) 0%, rgb(253, 29, 29) 50%, rgb(252, 176, 69) 100%);
 }
 
-form, h1, div {
-  margin: auto;
-  justify-content: center;
+form {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border: solid;
+  border-radius: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
 }
 
 .submit {
-  background-color: chartreuse;
   border-radius: 25%;
-  margin-top: 4rem;
+  justify-content: center;
+  margin-top: 1rem;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+.formulaire {
+  background: rgb(238, 174, 202);
+  background: radial-gradient(circle, rgb(238, 174, 202) 0%, rgb(148, 187, 233) 100%);
+  padding: 4rem;
+  margin-top: 7rem;
+  border-radius: 33%;
+}
+
+.inputARemplir {
+  width: 8rem;
+}
+
+.errors {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
 }/*# sourceMappingURL=style.css.map */

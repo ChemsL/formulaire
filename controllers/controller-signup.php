@@ -3,6 +3,8 @@
 require_once '../config.php';
 require_once '../models/utilisateur.php';
 
+$showform = true;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];
@@ -57,7 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $entreprise = $_POST['entreprise'];
 
         utilisateur::create($nom, $prenom, $pseudo, $birthdate, $email, $motDePasse, $entreprise);
-        
+        $showform = false;
+
+
     }
 }
 ?>

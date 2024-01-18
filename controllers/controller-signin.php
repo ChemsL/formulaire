@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($_POST['mot_de_passe'])) {
         $errors['mot_de_passe'] = 'Veuillez saisir votre mot de passe';
     }
-
+var_dump($errors);
     if (empty($errors)) {
         // ici commence les tests
         if (!Utilisateur::checkMailExists($_POST['email'])) {
@@ -22,12 +22,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             // je recupère toutes les infos via la méthode getInfos()
             $utilisateurInfos = Utilisateur::getInfos($_POST['email']);
+
+            var_dump($utilisateurInfos) ;
             // Utilisation de password_verify pour valider le mdp
             if (password_verify($_POST['mot_de_passe'], $utilisateurInfos['User_Password'])) {
                 header('Location: ../view-home.php');
-            } else {
+            }
+            else {
                 $errors['connexion'] = 'Mauvais mdp';
             }
+           
         }
     }
 }

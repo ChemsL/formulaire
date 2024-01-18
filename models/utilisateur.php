@@ -45,8 +45,6 @@
 
             // Exécution de la requête
             $requete->execute();
-            header("Location: /inscription-reussie.php?prenom=" . urlencode($prenom));
-            exit();
         } catch (PDOException $e) {
             echo "Erreur d'insertion : " . $e->getMessage();
         }

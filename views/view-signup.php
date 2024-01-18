@@ -12,6 +12,8 @@
 <body>
 
     <h1>SIGN UP</h1>
+<?php if ($showform) {?>
+
 
     <form action="" method="post" novalidate>
         <span class="inputARemplir">
@@ -75,7 +77,10 @@
         ?>
 
     </form>
-
+    <?php } else { ?> 
+        <p>inscription réussie</p>
+        <a href="../controllers/controller-signin.php">Se connecter</a>
+    <?php } ?>
 </body>
 
 </html>

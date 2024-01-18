@@ -15,28 +15,14 @@
 
     <form action="../controllers/controller-signin.php" method="post" novalidate>
         <label for="email">Adresse mail :</label><br>
-        <input type="text" id="email" name="email" value="" required><?php if (empty($_POST["email"])) {
-                                                                            echo '<span>Champs obligatoire.</span>';
-                                                                        } ?><br>
-
+        <input type="text" id="email" name="email" value="<?= $_POST['email']?? ''?>" required> <span><?= $errors['email'] ?? '' ?></span><br>
         <label for="mot_de_passe">Mot de passe :</label><br>
-        <input type="password" id="mot_de_passe" name="mot_de_passe" required><br>
-
+        <input type="password" id="mot_de_passe" name="mot_de_passe" required><span><?= $errors['mot_de_passe'] ?? '' ?></span><br>
+<p><?= $errors['connexion'] ?? '' ?></p>
         <input class="submit" type="submit" value="Se connecter">
 
-        <?php
-        // Affichage des erreurs s'il y en a
-        if (!empty($erreurs)) {
-            echo "<div class='errors' >";
-            foreach ($erreurs as $erreur) {
-                echo "<p>$erreur</p>";
-            }
-            echo "</div>";
-            $nom;
-        }
-        ?>
-
     </form>
+    <a href="../controllers/controller-signup.php">S'inscrire</a>
 
 </body>
 

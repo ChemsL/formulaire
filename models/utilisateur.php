@@ -51,7 +51,8 @@
             echo "Erreur d'insertion : " . $e->getMessage();
         }
     }
-/**
+
+ /**
      * Methode permettant de récupérer les informations d'un utilisateur avec son mail comme paramètre
      * 
      * @param string $email Adresse mail de l'utilisateur
@@ -86,6 +87,43 @@
             } else {
                 return true;
             }
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            die();
+        }
+    }
+
+
+/**
+     * Methode permettant de récupérer les infos d'un utilisateur avec son mail comme paramètre
+     * 
+     * @param string $email Adresse mail de l'utilisateur
+     * 
+     * @return array Tableau associatif contenant les infos de l'utilisateur
+     */
+    public static function getInfos(string $email): array
+    {
+        try {
+            // Création d'un objet $db selon la classe PDO
+            $db = new PDO("mysql:host=localhost;dbname=" . DBNAME, USERPSEUDO, USERPASSWORD);
+
+            // stockage de ma requete dans une variable
+            $sql = "SELECT * FROM `utilisateur` WHERE `User_Mail` = :email";
+
+            // je prepare ma requête pour éviter les injections SQL
+            $query = $db->prepare($sql);
+
+            // on relie les paramètres à nos marqueurs nominatifs à l'aide d'un bindValue
+            $query->bindValue(':email', $email, PDO::PARAM_STR);
+
+            // on execute la requête
+            $query->execute();
+
+            // on récupère le résultat de la requête dans une variable
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+
+            // on retourne le résultat
+            return $result;
         } catch (PDOException $e) {
             echo 'Erreur : ' . $e->getMessage();
             die();

@@ -23,7 +23,7 @@ form {
   margin: auto;
 }
 
-h1 {
+h2 {
   text-align: center;
 }
 
@@ -43,4 +43,85 @@ h1 {
   color: white;
   text-decoration: underline;
   font-weight: bold;
+}
+
+.date {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  font-weight: 400;
+  color: #fff;
+}
+
+.mainHome {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  font-weight: 800;
+  color: #fff;
+  margin-top: 6rem;
+}
+
+a {
+  align-items: center;
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  width: 9rem;
+  padding: 19px 24px;
+  text-decoration: none;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.a:active,
+.a:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .a {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}
+.randompp {
+  width: 12rem;
+  margin: auto;
+}
+
+.addTrajet {
+  width: 10rem;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  background-color: #5B42F3;
+}
+
+.profilBtn {
+  margin: auto;
+}
+
+.infoProfile {
+  background-color: #fff;
+  border-radius: 33%;
+  margin: auto;
+  padding: 4rem;
+}
+
+.formTrajet {
+  width: 60%;
+  margin: auto;
 }/*# sourceMappingURL=style.css.map */

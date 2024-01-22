@@ -12,6 +12,8 @@
 <body>
 
     <h1>SIGN UP</h1>
+    <a href="../controllers/controller-signin.php">Se connecter</a>
+
 <?php if ($showform) {?>
 
 
@@ -79,8 +81,9 @@
     </form>
     <?php } else { ?> 
         <p>inscription réussie</p>
-        <a href="../controllers/controller-signin.php">Se connecter</a>
+        
     <?php } ?>
+    
 </body>
 
 </html>

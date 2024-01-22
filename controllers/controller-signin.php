@@ -2,39 +2,50 @@
 require_once '../config.php';
 require_once '../models/utilisateur.php';
 
-// Nous déclenchons nos vérifications uniquement lorsqu'un submit de type POST est détecté
+// Démarrez la session
+session_start();
+
+// Initialiser le tableau d'erreurs
+$errors = [];
+
+// Vérifiez si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // tableau d'erreurs (stockage des erreurs)
-    $errors = [];
+    // Vérifiez si l'email est défini dans $_POST
+    $email = isset($_POST['email']) ? $_POST['email'] : null;
+    $motDePasse = $_POST['mot_de_passe'];
 
-    if (empty($_POST['email'])) {
-        $errors['email'] = 'Veuillez saisir votre Email';
+    // Vérifiez si l'email est vide
+    if (empty($email)) {
+        $errors['email'] = 'Veuillez saisir votre email.';
     }
 
-    if (empty($_POST['mot_de_passe'])) {
-        $errors['mot_de_passe'] = 'Veuillez saisir votre mot de passe';
+    // Vérifiez si le mot de passe est vide
+    if (empty($motDePasse)) {
+        $errors['mot_de_passe'] = 'Veuillez saisir votre mot de passe.';
     }
-var_dump($errors);
+
+    // S'il n'y a pas d'erreurs, continuez avec les vérifications
     if (empty($errors)) {
-        // ici commence les tests
-        if (!Utilisateur::checkMailExists($_POST['email'])) {
-            $errors['email'] = 'Utilisateur Inconnu';
-        } else {
-            // je recupère toutes les infos via la méthode getInfos()
-            $utilisateurInfos = Utilisateur::getInfos($_POST['email']);
+        // Vérifiez si l'email existe dans la base de données
+        if (Utilisateur::checkMailExists($email)) {
+            // Récupérez les informations de l'utilisateur
+            $utilisateurInfos = Utilisateur::getInfos($email);
 
-            var_dump($utilisateurInfos) ;
-            // Utilisation de password_verify pour valider le mdp
-            if (password_verify($_POST['mot_de_passe'], $utilisateurInfos['User_Password'])) {
-                header('Location: ../view-home.php');
+            if (password_verify($motDePasse, $utilisateurInfos['User_Password'])) {
+                // Stockez les informations de l'utilisateur dans la session
+                $_SESSION['user'] = $utilisateurInfos;
+               
+
+                header('Location: ../controllers/controller-home.php');
+                exit();
+            } else {
+                $errors['connexion'] = 'Mot de passe incorrect.';
             }
-            else {
-                $errors['connexion'] = 'Mauvais mdp';
-            }
-           
+        } else {
+            $errors['email'] = 'Utilisateur inconnu.';
         }
     }
 }
 
-include_once ('../views/view-signin.php');
+include_once '../views/view-signin.php';
 ?>

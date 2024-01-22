@@ -1,5 +1,5 @@
 <?php
- class utilisateur
+class utilisateur
 {
     /**
      * Méthode pour créer un utilisateur.
@@ -50,7 +50,7 @@
         }
     }
 
- /**
+    /**
      * Methode permettant de récupérer les informations d'un utilisateur avec son mail comme paramètre
      * 
      * @param string $email Adresse mail de l'utilisateur
@@ -92,7 +92,7 @@
     }
 
 
-/**
+    /**
      * Methode permettant de récupérer les infos d'un utilisateur avec son mail comme paramètre
      * 
      * @param string $email Adresse mail de l'utilisateur
@@ -127,7 +127,7 @@
             die();
         }
     }
-     /**
+    /**
      * Méthode pour récupérer le mot de passe d'un utilisateur par son email.
      * 
      * @param string $email Adresse mail de l'utilisateur
@@ -153,4 +153,31 @@
         }
     }
 
+
+    /**
+     * Méthode pour récupérer le pseudo d'un utilisateur par son email.
+     * 
+     * @param string $email Adresse mail de l'utilisateur
+     * 
+     * @return string|false Retourne le pseudo si l'utilisateur est trouvé, sinon false.
+     */
+    public static function getPseudoByEmail(string $email)
+    {
+        try {
+            $connexion = new PDO("mysql:host=localhost;dbname=" . DBNAME, USERPSEUDO, USERPASSWORD);
+            $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $requete = $connexion->prepare("SELECT User_Pseudo FROM utilisateur WHERE User_Mail = :email");
+            $requete->bindValue(':email', $email, PDO::PARAM_STR);
+            $requete->execute();
+
+            $resultat = $requete->fetch(PDO::FETCH_ASSOC);
+
+            return ($resultat !== false) ? $resultat['User_Pseudo'] : false;
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            return false;
+        }
+    }
 }
+?>

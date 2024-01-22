@@ -10,8 +10,9 @@
 </head>
 
 <body>
-
-    <h1>SIGN IN</h1>
+<h1>SIGN IN</h1>
+<a href="../controllers/controller-signup.php">S'inscrire</a>
+    
 
     <form action="../controllers/controller-signin.php" method="post" novalidate>
         <label for="email">Adresse mail :</label><br>
@@ -22,7 +23,7 @@
         <input class="submit" type="submit" value="Se connecter">
 
     </form>
-    <a href="../controllers/controller-signup.php">S'inscrire</a>
+    
 
 </body>
 

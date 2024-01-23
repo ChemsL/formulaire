@@ -18,6 +18,8 @@ echo "Date du jour : " . $dateDuJour;
 ?>
    </p>
 
+
+
    <img class="randompp"src="../assets/img/randompp.jpg" alt="Profile picture">
 
 
@@ -28,7 +30,7 @@ Bienvenue <?= $_SESSION['user']['User_Pseudo'] ?>
 
 </div>
 
-<a href="../controllers/controller-trajet.php" class="addTrajet"><button >Ajouter un trajet</button></a>
+<a href="../controllers/controller-trajet.php" class="addTrajet">Ajouter un trajet</a>
 
 <a class="profilBtn" href="../controllers/controller-profile.php"><i class="bi bi-person-circle"></i> MON PROFIL</a>
     

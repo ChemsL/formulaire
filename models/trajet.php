@@ -37,5 +37,30 @@ class trajet
             echo "Erreur d'insertion : " . $e->getMessage();
         }
     }
+
+    /**
+     * Methode permettant de récupérer les infos de trajet de l'utilisateur connecté
+     * 
+     * @param int $User_ID ID de l'utilisateur
+     * 
+     * @return array infos trajets l'utilisateur
+     */
+    public static function userTrajet(int $User_ID): array
+    {
+        try {
+            $db = new PDO("mysql:host=localhost;dbname=" . DBNAME, USERPSEUDO, USERPASSWORD);
+
+            $sql = "SELECT * FROM `trajet` WHERE `User_ID` = :user_id";
+            $query = $db->prepare($sql);
+            $query->bindValue(':user_id', $User_ID, PDO::PARAM_INT);
+            $query->execute();
+
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            return [];
+        }
+    }
 }
-?>

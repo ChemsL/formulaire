@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<h1>SIGN IN</h1>
+<h1>SE CONNECTER</h1>
 <a href="../controllers/controller-signup.php">S'inscrire</a>
     
 

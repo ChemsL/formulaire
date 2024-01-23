@@ -6,10 +6,6 @@ require_once '../models/trajet.php';
 session_start();
 
 $distanceParcourue = "";
-$dateTrajet = ""; 
-$dureeTrajet = ""; 
-$transportType = ""; 
-$User_ID = 0;
 
 
 
@@ -24,10 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_SESSION['user'])) {
         $User_ID = $_SESSION['user']['User_ID'];
     }
-
+    
+    trajet::create($distanceParcourue,$dateTrajet,$dureeTrajet,$transportType,$User_ID);
 }
 
-trajet::create($distanceParcourue,$dateTrajet,$dureeTrajet,$transportType,$User_ID);
 
 
 

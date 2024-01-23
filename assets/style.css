@@ -23,6 +23,14 @@ form {
   margin: auto;
 }
 
+h1 {
+  text-align: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  border: solid white 2px;
+}
+
 h2 {
   text-align: center;
 }
@@ -119,9 +127,21 @@ a {
   border-radius: 33%;
   margin: auto;
   padding: 4rem;
+  margin-bottom: 5rem;
 }
 
 .formTrajet {
   width: 60%;
   margin: auto;
+}
+
+.infoTrajets {
+  width: 75%;
+  margin-top: 8rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border: solid;
+  border-radius: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
 }/*# sourceMappingURL=style.css.map */

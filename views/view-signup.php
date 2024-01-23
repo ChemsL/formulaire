@@ -11,7 +11,7 @@
 
 <body>
 
-    <h1>SIGN UP</h1>
+    <h1>S'INSCRIRE</h1>
     <a href="../controllers/controller-signin.php">Se connecter</a>
 
 <?php if ($showform) {?>

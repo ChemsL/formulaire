@@ -19,6 +19,22 @@
     <?= $_SESSION['user']['User_Prenom'] ?><br>
     Né le <?= $_SESSION['user']['User_DateDeNaissance'] ?><br>
     </div>
+
+<div class="infoTrajets">
+
+<h2>Historique des trajets</h2>
+        <?php
+        foreach ($trajets as $trajet) {
+            echo "<p>Date du trajet: " . $trajet['Trajet_Date'] . "</p>";
+            echo "<p>Distance parcourue: " . $trajet['Trajet_DistanceParcourue_KM_'] . " km</p>";
+            echo "<p>Durée du trajet: " . $trajet['Trajet_Temps'] . "</p>";
+            echo "<p>Type de transport: " . $trajet['TansportType_ID'] . "</p>";
+            echo "<hr>";
+        }
+        ?>
+
+</div>
+
 </body>
 
 </html>

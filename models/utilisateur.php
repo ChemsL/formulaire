@@ -11,7 +11,7 @@ class utilisateur
      * @param string $motDePasse Mot de passe de l'utilisateur
      * @param string $entreprise Entreprise de l'utilisateur
      */
-    public static function create(string $nom, string $prenom, string $pseudo, string $birthdate, string $email, string $motDePasse, string $entreprise)
+    public static function create(string $nom, string $prenom, string $pseudo, string $birthdate, string $email, string $motDePasse, int $entreprise)
     {
 
 
@@ -40,7 +40,7 @@ class utilisateur
             $requete->bindValue(':birthdate', $birthdate, PDO::PARAM_STR);
             $requete->bindValue(':email', $email, PDO::PARAM_STR);
             $requete->bindValue(':motDePasse', password_hash($motDePasse, PASSWORD_DEFAULT), PDO::PARAM_STR);
-            $requete->bindValue(':entreprise', $entreprise, PDO::PARAM_STR);
+            $requete->bindValue(':entreprise', $entreprise, PDO::PARAM_INT);
 
 
             // Exécution de la requête
@@ -179,5 +179,51 @@ class utilisateur
             return false;
         }
     }
+
+    public static function updateProfile(int $User_ID, string $nom, string $prenom, string $pseudo, string $birthdate)
+{
+    try {
+        $connexion = new PDO("mysql:host=localhost;dbname=" . DBNAME, USERPSEUDO, USERPASSWORD);
+        $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $requete = $connexion->prepare("UPDATE utilisateur SET User_Nom = :User_Nom, User_Prenom = :User_Prenom, User_Pseudo = :User_Pseudo, User_DateDeNaissance = :User_DateDeNaissance WHERE User_ID = :User_ID");
+        
+
+        $requete->bindValue(':User_Nom', $nom, PDO::PARAM_STR);
+        $requete->bindValue(':User_Prenom', $prenom, PDO::PARAM_STR);
+        $requete->bindValue(':User_Pseudo', $pseudo, PDO::PARAM_STR);
+        $requete->bindValue(':User_DateDeNaissance', $birthdate, PDO::PARAM_STR);
+        $requete->bindValue(':User_ID', $User_ID, PDO::PARAM_INT);
+        $requete->execute();
+
+        return true;
+    } catch (PDOException $e) {
+        echo 'Erreur : ' . $e->getMessage();
+        return false;
+    }
 }
-?>
+
+public static function addPhoto(int $User_ID, string $photo)
+    {
+        try {
+            $connexion = new PDO("mysql:host=localhost;dbname=" . DBNAME, USERPSEUDO, USERPASSWORD);
+            $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $requete = $connexion->prepare("UPDATE utilisateur SET User_Photo = :User_Photo WHERE User_ID = :User_ID");
+            $requete->bindValue(':User_Photo', $photo, PDO::PARAM_STR);
+            $requete->bindValue(':User_ID', $User_ID, PDO::PARAM_INT);
+            $requete->execute();
+
+            $resultat = $requete->fetch(PDO::FETCH_ASSOC);
+
+            return $resultat;
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            return false;
+        }
+    }
+}
+
+
+
+

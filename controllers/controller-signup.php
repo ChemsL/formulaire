@@ -2,10 +2,13 @@
 
 require_once '../config.php';
 require_once '../models/utilisateur.php';
+require_once '../models/entreprise.php';
 
 $showform = true;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+var_dump($_POST);
+
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];
     $pseudo = $_POST["pseudo"];
@@ -42,13 +45,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($motDePasse) || strlen($motDePasse) < 8) {
         $erreurs[] = '<i class="bi bi-exclamation-triangle-fill"></i>' . "Le mot de passe doit avoir au moins 8 caractères.";
     }
+    $motDePasseConfirmation = $_POST["mot_de_passe_confirmation"];
+
+    if (empty($motDePasseConfirmation) || $motDePasseConfirmation !== $motDePasse) {
+        $erreurs[] = '<i class="bi bi-exclamation-triangle-fill"></i>' . "La confirmation du mot de passe ne correspond pas.";
+    }
 
     if (!$cguChecked) {
         $erreurs[] = '<i class="bi bi-exclamation-triangle-fill"></i>' . "Veuillez accepter les CGU pour continuer.";
     }
 
     if (empty($erreurs)) {
-
+        $Entreprise = Entreprise::getEntreprise();
         // Si aucune erreur, procéder à l'inscription
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];

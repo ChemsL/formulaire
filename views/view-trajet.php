@@ -26,23 +26,14 @@
         <label for="imageTrajet">Image du trajet (optionnel):</label>
         <input type="file" id="imageTrajet" name="imageTrajet" accept="image/*">
 
-       Type de transport : <select id="transportType" name="transportType" required>
-            <option value="1" <?php if (!empty($transportType) && $transportType == "1") {
-                                    echo "selected";
-                                } ?>>Vélo</option>
-            <option value="2" <?php if (!empty($transportType) && $transportType == "2") {
-                                    echo "selected";
-                                } ?>>Marche</option><br>
-            <option value="3" <?php if (!empty($transportType) && $transportType == "3") {
-                                    echo "selected";
-                                } ?>>Roller</option><br>
-            <option value="4" <?php if (!empty($transportType) && $transportType == "4") {
-                                    echo "selected";
-                                } ?>>Skate</option><br>
-            <option value="5" <?php if (!empty($transportType) && $transportType == "5") {
-                                    echo "selected";
-                                } ?>>Trotinette</option><br>
-            <button type="submit">Ajouter</button><br>
+        <select id="transportType" name="transportType" required>
+        <option value="">--Comment avez vous éffectué ce trajet ?</option> <?php
+                foreach (Type::TypeDeTransport() as $trajets) { ?>
+                    <option value="<?= $trajets["TansportType_ID"]?>">
+                     <?= $trajets["TransportType_Name"] ?></option> <?php } ?>
+
+                     </select>
+
 
             <input  type="submit" value="Enregistrer le trajet">
     </form>

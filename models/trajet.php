@@ -50,7 +50,7 @@ class trajet
         try {
             $db = new PDO("mysql:host=localhost;dbname=" . DBNAME, USERPSEUDO, USERPASSWORD);
 
-            $sql = "SELECT * FROM `trajet` WHERE `User_ID` = :user_id";
+            $sql = "SELECT * FROM `trajet` NATURAL JOIN `transporttype` WHERE `User_ID` = :user_id";
             $query = $db->prepare($sql);
             $query->bindValue(':user_id', $User_ID, PDO::PARAM_INT);
             $query->execute();
@@ -63,4 +63,26 @@ class trajet
             return [];
         }
     }
-}
+
+    public static function delete($Trajet_ID)
+    {
+
+        try {
+
+            $db = new PDO("mysql:host=localhost;dbname=" . DBNAME, USERPSEUDO, USERPASSWORD);
+
+            $sql = "DELETE FROM trajet WHERE Trajet_ID = :Trajet_ID";
+
+            $query = $db->prepare($sql);
+
+            $query->bindValue(':Trajet_ID', $Trajet_ID, PDO::PARAM_STR);
+           
+
+            $query->execute();
+        } catch (PDOException $e) {
+            // Lancer une exception ici ou retourner une valeur d'erreur
+            echo ('Erreur lors de la création d\'utilisateur : ' . $e->getMessage());
+        }
+    }
+
+ }

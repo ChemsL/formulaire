@@ -1,6 +1,8 @@
 <?php
 require_once '../config.php';
 require_once '../models/trajet.php';
+require_once '../models/transportType.php';
+
 
 
 session_start();

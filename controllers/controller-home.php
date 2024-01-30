@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 require_once '../config.php';
@@ -12,6 +13,9 @@ if (!isset($_SESSION['user'])) {
     header('Location: ../controllers/controller-signin.php');
     exit();
 }
+elseif (isset($_SESSION['user'])) {
+    $pseudo = $_SESSION['user']['User_Pseudo'];
+    $photo = $_SESSION['user']['User_Photo'];
+}
 
 include_once '../views/view-home.php';
-?>

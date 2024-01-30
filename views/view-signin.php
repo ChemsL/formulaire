@@ -10,8 +10,11 @@
 </head>
 
 <body>
+
+<div class="bodyConnect">
+
 <h1>SE CONNECTER</h1>
-<a href="../controllers/controller-signup.php">S'inscrire</a>
+<a href="../controllers/controller-signup.php" class="btnInscription">S'inscrire</a>
     
 
     <form action="../controllers/controller-signin.php" method="post" novalidate>
@@ -23,8 +26,12 @@
         <input class="submit" type="submit" value="Se connecter">
 
     </form>
-    
 
+    </div>
+
+    <script src="script.js">
+        
+    </script>
 </body>
 
 </html>

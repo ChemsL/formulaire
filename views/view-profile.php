@@ -13,28 +13,32 @@
 <body>
     <a href="../controllers/controller-home.php">Home</a>
 
+
     <div class="infoProfile">
-    <?= $_SESSION['user']['User_Pseudo'] ?><br>
-    <?= $_SESSION['user']['User_Nom'] ?><br>
-    <?= $_SESSION['user']['User_Prenom'] ?><br>
-    Né le <?= $_SESSION['user']['User_DateDeNaissance'] ?><br>
+
+    <?php 
+if (empty($photo)) {
+    echo '<img class="randompp" src="../assets/img/randomProfilePic.png" alt="Profile picture random">';
+} else {
+    echo '<img class="randompp" src="../assets/img/' . $photo . '" alt="Profile picture">';
+}
+?><br>
+        <?= $_SESSION['user']['User_Pseudo'] ?><br>
+        <?= $_SESSION['user']['User_Nom'] ?><br>
+        <?= $_SESSION['user']['User_Prenom'] ?><br>
+        Né le
+        <?= $_SESSION['user']['User_DateDeNaissance'] ?><br>
+        <a href="../controllers/controller-updateprofile.php" class="update">Modifier mes informations</a>
+
     </div>
 
-<div class="infoTrajets">
 
-<h2>Historique des trajets</h2>
-        <?php
-        foreach ($trajets as $trajet) {
-            echo "<p>Date du trajet: " . $trajet['Trajet_Date'] . "</p>";
-            echo "<p>Distance parcourue: " . $trajet['Trajet_DistanceParcourue_KM_'] . " km</p>";
-            echo "<p>Durée du trajet: " . $trajet['Trajet_Temps'] . "</p>";
-            echo "<p>Type de transport: " . $trajet['TansportType_ID'] . "</p>";
-            echo "<hr>";
-        }
-        ?>
 
-</div>
 
+
+    <script src="script.js">
+
+    </script>
 </body>
 
 </html>

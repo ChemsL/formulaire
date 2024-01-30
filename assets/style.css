@@ -1,8 +1,9 @@
 body {
   display: flex;
   flex-direction: column;
-  background: rgb(131, 58, 180);
-  background: linear-gradient(90deg, rgb(131, 58, 180) 0%, rgb(253, 29, 29) 50%, rgb(252, 176, 69) 100%);
+  background-image: url(../assets/img/bgtest.avif);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 form {
@@ -28,11 +29,15 @@ h1 {
   width: -moz-fit-content;
   width: fit-content;
   margin: auto;
-  border: solid white 2px;
+  color: #fff;
 }
 
 h2 {
   text-align: center;
+}
+
+.btnInscription {
+  margin: auto;
 }
 
 .formulaire {
@@ -73,30 +78,25 @@ h2 {
 a {
   align-items: center;
   background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
-  border: 0;
   border-radius: 8px;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-  box-sizing: border-box;
-  color: #FFFFFF;
+  text-align: center;
   display: flex;
-  font-family: Phantomsans, sans-serif;
-  font-size: 20px;
   justify-content: center;
-  line-height: 1em;
-  width: 9rem;
-  padding: 19px 24px;
-  text-decoration: none;
-  -moz-user-select: none;
-       user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  cursor: pointer;
+  align-items: center;
+  height: 3rem;
+  width: 12rem;
+  margin: 15px;
+  color: #FFFFFF;
 }
 
 .a:active,
 .a:hover {
   outline: 0;
+}
+
+i {
+  margin: 5px;
 }
 
 @media (min-width: 768px) {
@@ -128,6 +128,14 @@ a {
   margin: auto;
   padding: 4rem;
   margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.infoProfile img {
+  width: 4rem;
+  height: 4rem;
+  align-items: center;
 }
 
 .formTrajet {
@@ -144,4 +152,73 @@ a {
   border-radius: 1.5rem;
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
+}
+.infoTrajets form {
+  border: solid white 5px;
+  background-color: red;
+}
+.infoTrajets button {
+  align-items: end;
+}
+
+.navLinks {
+  display: flex;
+  justify-content: space-between;
+  border: none;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+}
+
+.mainHome {
+  font-weight: 800;
+}
+
+.bodyConnect {
+  margin-top: 9rem;
+}
+.bodyConnect h1 {
+  margin-bottom: 2rem;
+}
+.bodyConnect .btnInscription {
+  margin-bottom: 2rem;
+}
+
+.bodyInscription {
+  margin-top: 7rem;
+}
+.bodyInscription h1 {
+  margin-bottom: 2rem;
+}
+.bodyInscription a {
+  margin: auto;
+}
+.bodyInscription form {
+  margin-top: 2rem;
+}
+
+/* Default styles for larger screens */
+.navLinks {
+  display: flex;
+  justify-content: space-around;
+  background-color: #333; /* Adjust as needed */
+  padding: 15px;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+  /* Hide navigation links by default */
+  .navLinks a {
+    display: none;
+  }
+  /* Display burger menu icon */
+  .burger-menu {
+    display: block;
+    cursor: pointer;
+    color: white; /* Adjust as needed */
+    font-size: 20px;
+    margin: auto; /* Adjust as needed */
+  }
+  .navLinks.active a {
+    display: block;
+  }
 }/*# sourceMappingURL=style.css.map */

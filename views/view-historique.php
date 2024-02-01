@@ -11,21 +11,23 @@
 </head>
 
 <body>
-    <a href="../controllers/controller-home.php">Home</a>
+<?php include_once('../assets/header.php') ?>
 
 
-<div class="infoTrajets">
+<div class="infoTrajets flex justify-center items-center flex-col">
 
-<h2>Historique des trajets</h2>
+<h1 class="text-2xl mb-6" >Historique des trajets</h1>
+
         <?php
         foreach ($trajets as $trajet) {
             echo "<p>Date du trajet: " . $trajet['Trajet_Date'] . "</p>";
             echo "<p>Distance parcourue: " . $trajet['Trajet_DistanceParcourue_KM_'] . " km</p>";
             echo "<p>Durée du trajet: " . $trajet['Trajet_Temps'] . "</p>";
             echo "<p>Type de transport: " . $trajet['TransportType_Name'] . "</p>";?>
-            <form action="" method="post">
+            <form class="flex items-center justify-center bg-red-700 text-white p-4 rounded-md border border-white cursor-pointer mb-4 mt-4 w-1/3" action="" method="post">
                 <input type="hidden" name="Trajet_ID" value="<?= $trajet['Trajet_ID']?>">
-                <input type="submit" name="delete" value="delete" onclick="return confirmDelete()" >
+                <input type="submit" name="delete" value="Supprimer le trajet" onclick="return confirmDelete()" >
+                
             </form>
            <?php echo "<hr>";
         }

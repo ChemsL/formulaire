@@ -6,15 +6,7 @@ body {
     background-size: cover;
 }
 
-form {
-    width: fit-content;
-    margin: 0 auto;
-    padding: 1.5rem;
-    border: solid;
-    border-radius: 1.5rem;
-    background-color: rgba(0, 0, 0, .5);
-    color: #fff;
-}
+
 
 .submit {
     border-radius: 25%;
@@ -73,40 +65,17 @@ h2 {
     margin-top: 6rem;
 }
 
-a {
-    align-items: center;
-    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
-    border-radius: 8px;
-    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 3rem;
-    width: 12rem;
-    margin: 15px;
-    color: #FFFFFF;
-}
-
-.a:active,
-.a:hover {
-    outline: 0;
-}
 
 i {
     margin: 5px;
 }
 
-@media (min-width: 768px) {
-    .a {
-        font-size: 24px;
-        min-width: 196px;
-    }
-}
-
-.randompp {
-    width: 12rem;
+.randompp {margin-top: 8rem;
+    margin-bottom: 4rem;
+    width: 24rem;
+    height: 18rem;
     margin: auto;
+    border-radius: 100%;
 }
 
 .addTrajet {
@@ -131,9 +100,10 @@ i {
     flex-direction: column;
     align-items: center;
     img {
-        width: 4rem;
-        height: 4rem;
+        width: 12rem;
+        height: 12rem;
         align-items: center;
+        margin-bottom: 4rem;
     }
 
 }
@@ -154,11 +124,7 @@ i {
     background-color: rgba(0, 0, 0, .5);
     color: #fff;
 
-    form {
-        border: solid white 5px;
-        background-color: red;
-        
-    }
+
 
     button {
         align-items: end;
@@ -173,6 +139,7 @@ i {
     border: none;
     font-family: Phantomsans, sans-serif;
     font-size: 20px;
+    margin-bottom: 5rem;
 
 }
 
@@ -207,33 +174,7 @@ i {
         margin-top: 2rem;
     }
 }
-/* Default styles for larger screens */
-.navLinks {
-    display: flex;
-    justify-content: space-around;
-    background-color: #333; /* Adjust as needed */
-    padding: 15px;
+
+.date {
+    margin-bottom: 4rem;
 }
-
-/* Media query for smaller screens */
-@media only screen and (max-width: 768px) {
-    /* Hide navigation links by default */
-    .navLinks a {
-        display: none;
-    }
-
-    /* Display burger menu icon */
-    .burger-menu {
-        display: block;
-        cursor: pointer;
-        color: white; /* Adjust as needed */
-        font-size: 20px;
-        margin: auto; /* Adjust as needed */
-    }
-
-    .navLinks.active a {
-        display: block;
-
-    }
-}
-

@@ -10,15 +10,22 @@
     <title>Mon profile</title>
 </head>
 
+<?php include_once('../assets/header.php') ?>
+
+
 <body>
     <a href="../controllers/controller-home.php">Home</a>
     <div class="infoProfile">
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
     Pseudo <input name="pseudo" type="text" value="<?= $_SESSION['user']['User_Pseudo'] ?>"></input><br>
     Nom <input name="prenom" type="text" value="<?= $_SESSION['user']['User_Nom'] ?>"><br>
     Prénom <input name="nom" type="text" value="<?= $_SESSION['user']['User_Prenom'] ?>"><br>
     Né le <input name="birthdate" type="text" value="<?= $_SESSION['user']['User_DateDeNaissance'] ?>"><br>
-    Ajouter une photo <input type="file" name="User_Photo" accept="image/*"><br>
+
+    <?php if (empty($_FILES['User_Photo']['name']) && !empty($_SESSION['user']['User_Photo'])) : ?>
+        Photo actuelle : <img src="../assets/img/<?php echo $_SESSION['user']['User_Photo']; ?>" alt="Profile picture"><br>
+    <?php endif; ?>
+    Choisir une nouvelle photo <input type="file" name="User_Photo" accept="image/*"><br>
     <input type="submit" value="Enregistrer">
     </form>
     <a href="../controllers/controller-profile.php">Retour sur le profil</a>

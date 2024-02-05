@@ -231,19 +231,24 @@ class utilisateur
         try {
             $connexion = new PDO("mysql:host=localhost;dbname=" . DBNAME, USERPSEUDO, USERPASSWORD);
             $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
+            $sqlDeleteRides = "DELETE FROM trajet WHERE User_ID = :User_ID";
+            $queryDeleteRides = $connexion->prepare($sqlDeleteRides);
+            $queryDeleteRides->bindValue(':User_ID', $User_ID, PDO::PARAM_INT);
+            $queryDeleteRides->execute();
+
+
             // Préparation de la requête SQL
             $requete = $connexion->prepare("DELETE FROM utilisateur WHERE User_ID = :User_ID");
             $requete->bindValue(':User_ID', $User_ID, PDO::PARAM_INT);
-    
+
             // Exécution de la requête
             $requete->execute();
-    
+
         } catch (PDOException $e) {
             die("Erreur de connexion à la base de données ou erreur d'insertion : " . $e->getMessage());
         }
     }
-    
+
 
 }
 

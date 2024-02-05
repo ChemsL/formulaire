@@ -89,6 +89,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   header('Location: controller-profile.php');
   exit();
 }
-var_dump($_POST);
 include_once '../views/view-updateprofile.php';
 

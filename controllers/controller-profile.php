@@ -10,15 +10,23 @@ if (!isset($_SESSION['user'])) {
     // Redirigez l'utilisateur vers la page de connexion s'il n'est pas connecté
     header('Location: ../controllers/controller-signin.php');
     exit();
-}
-else {
+} else {
     $User_ID = $_SESSION['user']['User_ID'];
     $trajets = trajet::userTrajet($User_ID);
-   $photo = $_SESSION['user']['User_Photo'];
-    
-
-
+    $photo = $_SESSION['user']['User_Photo'];
 
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_POST['delete'] === 'delete') {
+        $User_ID = $_SESSION['user']['User_ID'];
 
+        utilisateur::deleteAccount($User_ID);
+
+        session_unset();
+        session_destroy();
+
+        header("Location: controller-signin.php");
+        exit();
+    }
+}
 include_once '../views/view-profile.php';

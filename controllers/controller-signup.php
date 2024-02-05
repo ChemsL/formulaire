@@ -7,7 +7,6 @@ require_once '../models/entreprise.php';
 $showform = true;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-var_dump($_POST);
 
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];

@@ -17,10 +17,11 @@ elseif (isset($_SESSION['user'])){
     $trajets = trajet::userTrajet($User_ID);
 
 }
-
+var_dump($_POST);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    echo "1";
     if ($_POST['delete'] === 'delete') {
-
+        echo "2";
        trajet::delete($_POST["Trajet_ID"]);
 
        header("Location: ../controllers/controller-historique.php");
@@ -28,5 +29,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
+
 include_once '../views/view-historique.php';
-?>

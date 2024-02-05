@@ -140,19 +140,29 @@ i {
 
 .bodyConnect {
   margin-top: 9rem;
+  text-align: center;
 }
 .bodyConnect h1 {
   margin-bottom: 2rem;
+  text-align: center;
+  margin: auto;
 }
 .bodyConnect .btnInscription {
   margin-bottom: 2rem;
 }
 
+.bodyInscription a, .bodyConnect a {
+  margin-left: 15rem;
+}
+
 .bodyInscription {
   margin-top: 7rem;
+  text-align: center;
 }
 .bodyInscription h1 {
   margin-bottom: 2rem;
+  text-align: center;
+  margin: auto;
 }
 .bodyInscription a {
   margin: auto;

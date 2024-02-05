@@ -149,21 +149,33 @@ i {
 
 .bodyConnect {
     margin-top: 9rem;
+    text-align: center;
 
     h1 {
-        margin-bottom: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+    
+            margin: auto;
     }
 
     .btnInscription {
         margin-bottom: 2rem;
     }
 }
-
+.bodyInscription, .bodyConnect {
+a{
+    margin-left: 15rem;
+}
+}
 .bodyInscription {
     margin-top: 7rem;
+    text-align: center;
 
     h1 {
         margin-bottom: 2rem;
+        text-align: center;
+
+        margin: auto;
     }
 
     a {
